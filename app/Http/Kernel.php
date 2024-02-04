@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http;
 
 use App\Http\Middleware\IsRole;
@@ -65,6 +66,5 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role' => IsRole::class,
-
     ];
 }

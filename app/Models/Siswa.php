@@ -10,6 +10,8 @@ class Siswa extends Model
 {
     use HasFactory;
 
+    protected $table = 'siswa'; // Menentukan nama tabel secara eksplisit
+
     protected $primaryKey = 'nisn';
 
     protected $fillable = [
@@ -19,7 +21,7 @@ class Siswa extends Model
 
     public function kelas(): BelongsTo
     {
-        return $this->belongsTo(Kelas::class);
+        return $this->belongsTo(Kelas::class, 'idKelas');
     }
 
     public function bayar(): BelongsTo
