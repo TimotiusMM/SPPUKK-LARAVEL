@@ -26,7 +26,7 @@
                                     </form>
                                 </div>
                                 <div class="ml-3">
-                                    <a href="{{ route('grade.create') }}"
+                                    <a href="{{ route('kelas.create') }}"
                                        class="inline-flex items-center px-6 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 transition ease-in-out duration-150">
                                         Tambah
                                     </a>
@@ -49,20 +49,20 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($grades as $grade)
+                                    @foreach($kelas as $kelas)
                                         <tr class="border-b">
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $grade->grade_name }}
+                                                {{ $kelas->namaKelas }}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $grade->skill_competency }}
+                                                {{ $kelas->jurusan }}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                <form action="{{ route('grade.destroy', $grade->id) }}" method="post">
+                                                <form action="{{ route('kelas.destroy', $kelas->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <div class="flex">
-                                                        <a href="{{ route('grade.edit', $grade->id) }}"
+                                                        <a href="{{ route('kelas.edit', $kelas->id) }}"
                                                            class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 transition ease-in-out duration-150">
                                                             Edit
                                                         </a>
@@ -79,7 +79,7 @@
                                 </table>
                             </div>
 
-                            {!! $grades->links() !!}
+                            {!! $kelas->links() !!}
 
                             @if (in_array(session('status'), ['success', 'failed']))
                                 <p

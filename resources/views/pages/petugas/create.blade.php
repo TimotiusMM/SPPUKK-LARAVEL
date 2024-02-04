@@ -9,13 +9,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl">
-                    <form method="post" action="{{ route('staff.store') }}" class="mt-6 space-y-6">
+                    <form method="post" action="{{ route('petugas.store') }}" class="mt-6 space-y-6">
                         @csrf
 
                         <div>
-                            <x-input-label for="name" :value="__('Nama')" />
-                            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name')" autofocus />
-                            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+                            <x-input-label for="nama" :value="__('Nama')" />
+                            <x-text-input id="nama" name="nama" type="text" class="mt-1 block w-full" :value="old('nama')" autofocus />
+                            <x-input-error class="mt-2" :messages="$errors->get('nama')" />
                         </div>
 
                         <div>

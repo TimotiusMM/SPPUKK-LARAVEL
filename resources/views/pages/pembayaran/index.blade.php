@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Pembayaran SPP ' . $student->name . ' [' . $student->nisn . ']') }}
+            {{ __('Pembayaran SPP ' . $siswa->nama . ' [' . $siswa->nisn . ']') }}
         </h2>
     </x-slot>
 
@@ -13,12 +13,12 @@
                         <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
 
                             <div class="flex">
-                                <a href="{{ route('payment.create', $student->nisn) }}"
+                                <a href="{{ route('pembayaran.create', $siswa->nisn) }}"
                                    class="inline-flex items-center mr-1 px-6 py-2 mt-6 bg-gray-800 border border-transparent text-xs rounded-md font-semibold text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 transition ease-in-out duration-150">
                                     Bayar
                                 </a>
                                 @if(auth()->user()->role == \App\Enums\Role::ADMIN->value)
-                                    <a href="{{ route('payment.print', $student->nisn) }}"
+                                    <a href="{{ route('pembayaran.print', $siswa->nisn) }}"
                                        class="inline-flex items-center mr-1 px-6 py-2 mt-6 bg-gray-800 border border-transparent text-xs rounded-md font-semibold text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 transition ease-in-out duration-150">
                                         Cetak Laporan
                                     </a>
@@ -45,19 +45,19 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($payments as $payment)
+                                    @foreach($pembayaran as $pembayaran)
                                         <tr class="border-b">
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $payment->paid_at }}
+                                                {{ $pembayaran->tanggalBayar }}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $payment->paid_month . ' ' . $payment->paid_year }}
+                                                {{ $pembayaran->bulanBayar . ' ' . $pembayaran->tahunBayar }}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ "Rp" . number_format($payment->amount,2,',','.') }}
+                                                {{ "Rp" . number_format($pembayaran->jumlah,2,',','.') }}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $payment->staff?->name }}
+                                                {{ $pembayaran->petiugas?->nama }}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -65,7 +65,7 @@
                                 </table>
                             </div>
 
-                            {!! $payments->links() !!}
+                            {!! $pembayaran->links() !!}
 
                             @if (in_array(session('status'), ['success', 'failed']))
                                 <p

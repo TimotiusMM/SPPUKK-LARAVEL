@@ -4,7 +4,7 @@
     <table style="width: 100%">
         <tr>
             <td style="width: 15%" class="font-weight-bold">Siswa:</td>
-            <td style="width: 50%">{{ $student->name . ' - ' . $student->nisn }}</td>
+            <td style="width: 50%">{{ $siswa->nama . ' - ' . $siswa->nisn }}</td>
             <td style="width: 15%" class="font-weight-bold">Tanggal Cetak:</td>
             <td style="width: 20%; text-align: right">{{ \Carbon\Carbon::now()->isoFormat('DD-MM-Y') }}</td>
         </tr>
@@ -24,14 +24,14 @@
         </tr>
         </thead>
         <tbody>
-        @foreach ($payments as $payment)
+        @foreach ($pembayarans as $pembayaran)
             <tr>
                 <th scope="row">{{ $loop->iteration }}</th>
-                <td>{{ \Carbon\Carbon::parse($payment->paid_at)->isoFormat('DD-MM-Y') }}</td>
-                <td>{{ $payment->paid_month }}</td>
-                <td>{{ $payment->paid_year }}</td>
-                <td>{{ "Rp" . number_format($payment->amount,2,',','.') }}</td>
-                <td>{{ $payment->staff?->name }}</td>
+                <td>{{ \Carbon\Carbon::parse($pembayaran->tanggalBayar)->isoFormat('DD-MM-Y') }}</td>
+                <td>{{ $pembayaran->bulanBayar }}</td>
+                <td>{{ $pembayaran->tahunBayar }}</td>
+                <td>{{ "Rp" . number_format($pembayaran->jumlah,2,',','.') }}</td>
+                <td>{{ $pembayaran->petugas?->nama }}</td>
             </tr>
         @endforeach
         </tbody>

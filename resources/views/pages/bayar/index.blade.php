@@ -26,7 +26,7 @@
                                     </form>
                                 </div>
                                 <div class="ml-3">
-                                    <a href="{{ route('fee.create') }}"
+                                    <a href="{{ route('bayar.create') }}"
                                        class="inline-flex items-center px-6 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 transition ease-in-out duration-150">
                                         Tambah
                                     </a>
@@ -49,20 +49,20 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($fees as $fee)
+                                    @foreach($bayar as $bayar)
                                         <tr class="border-b">
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $fee->year }}
+                                                {{ $bayar->tahun }}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ "Rp" . number_format($fee->nominal,2,',','.') }}
+                                                {{ "Rp" . number_format($bayar->nominal,2,',','.') }}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                <form action="{{ route('fee.destroy', $fee->id) }}" method="post">
+                                                <form action="{{ route('bayar.destroy', $bayar->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <div class="flex">
-                                                        <a href="{{ route('fee.edit', $fee->id) }}"
+                                                        <a href="{{ route('bayar.edit', $bayar->id) }}"
                                                            class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 transition ease-in-out duration-150">
                                                             Edit
                                                         </a>
@@ -79,7 +79,7 @@
                                 </table>
                             </div>
 
-                            {!! $fees->links() !!}
+                            {!! $bayar->links() !!}
 
                             @if (in_array(session('status'), ['success', 'failed']))
                                 <p

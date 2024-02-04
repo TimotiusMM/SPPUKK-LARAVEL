@@ -4,7 +4,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{ __('Pembayaran SPP ' . $student->name . ' [' . $student->nisn . ']') }}
+                    {{ __('Pembayaran SPP ' . $siswa->nama . ' [' . $siswa->nisn . ']') }}
                 <form action="{{ route('guest.logout') }}" method="post">
                     @csrf
                     <x-primary-button class="mt-4 mx-auto">
@@ -42,19 +42,19 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($payments as $payment)
+                                    @foreach($pembayaran as $pembayaran)
                                         <tr class="border-b">
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $payment->paid_at }}
+                                                {{ $pembayaran->tanggalBayar }}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $payment->paid_month . ' ' . $payment->paid_year }}
+                                                {{ $pembayaran->bulanBayar . ' ' . $pembayaran->tahunBayar }}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ "Rp" . number_format($payment->amount,2,',','.') }}
+                                                {{ "Rp" . number_format($pembayaran->amount,2,',','.') }}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $payment->staff?->name }}
+                                                {{ $pembayaran->petugas?->nama }}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -62,7 +62,7 @@
                                 </table>
                             </div>
 
-                            {!! $payments->links() !!}
+                            {!! $pembayaran->links() !!}
 
                             @if (in_array(session('status'), ['success', 'failed']))
                                 <p
