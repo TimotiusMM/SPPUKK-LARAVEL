@@ -9,6 +9,9 @@ class Spp extends Model
 {
     use HasFactory;
 
+    protected $table = 'spp'; // Menentukan nama tabel secara eksplisit
+
+
     protected $fillable = ['tahun', 'nominal'];
 
     public function scopeSearch($query, $search)

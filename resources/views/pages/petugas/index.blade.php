@@ -49,20 +49,20 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($petugas as $petugas)
+                                    @foreach($petugas as $data)
                                         <tr class="border-b">
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $petugas->nama }}
+                                                {{ $data->nama }}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $petugas->username }}
+                                                {{ $data->username }}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                <form action="{{ route('petugas.destroy', $petugas->id) }}" method="post">
+                                                <form action="{{ route('petugas.destroy', $data->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <div class="flex">
-                                                        <a href="{{ route('petugas.edit', $petugas->id) }}"
+                                                        <a href="{{ route('petugas.edit', $data->id) }}"
                                                            class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 transition ease-in-out duration-150">
                                                             Edit
                                                         </a>

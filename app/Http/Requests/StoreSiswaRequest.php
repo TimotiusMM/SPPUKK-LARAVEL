@@ -35,8 +35,8 @@ class StoreSiswaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nisn' => ['required', 'digits:10', 'unique:students,nisn'],
-            'nis' => ['required', 'digits:8', 'unique:students,nis'],
+            'nisn' => ['required', 'digits:10', 'unique:siswa,nisn'],
+            'nis' => ['required', 'digits:8', 'unique:siswa,nis'],
             'nama' => ['required'],
             'alamat' => ['required'],
             'telp' => ['required'],
