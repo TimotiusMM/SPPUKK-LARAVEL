@@ -10,6 +10,9 @@ class Pembayaran extends Model
 {
     use HasFactory;
 
+    protected $table = 'pembayaran'; // Menentukan nama tabel secara eksplisit
+
+
     protected $fillable = [
         'tanggalBayar', 'jumlah', 'bulanBayar', 'tahunBayar',
         'nisn', 'idUser', 'idSpp',
