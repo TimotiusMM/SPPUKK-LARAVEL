@@ -67,7 +67,7 @@
                                                 {{ $data->kelas?->namaKelas }}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ "Rp" . number_format($data->bayar?->nominal,2,',','.') }}
+                                                {{ "Rp " . number_format($data->bayar?->nominal,2,',','.') }}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                 <a href="{{ route('pembayaran.index', $data->nisn) }}"
